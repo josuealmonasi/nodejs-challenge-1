@@ -4,6 +4,7 @@ const requestHandler = (req, res) => {
 	const url = req.url;
 	const method = req.method;
 	if (url === '/') {
+		res.setHeader('Content-Type', 'text/html');
 		res.write(
 			`<body>
         <h1>Hello welcome to Node.js challenge 1</h1>
@@ -16,6 +17,7 @@ const requestHandler = (req, res) => {
 		return res.end();
 	}
 	if (url === '/users') {
+		res.setHeader('Content-Type', 'text/html');
 		res.write(
 			`<body>
         <h1>Hello welcome to Node.js challenge 1</h1>
@@ -41,16 +43,16 @@ const requestHandler = (req, res) => {
 		const body = [];
 		let parsedBody = '';
 		req.on('data', chunk => {
-			console.log(chunk);
 			body.push(chunk);
 		});
 		req.on('end', () => {
 			parsedBody = Buffer.concat(body).toString();
-			console.log(parsedBody);
-			res.setHeader('Content-Type', 'text/html');
-			res.setHeader('Location', '/');
-			return res.end();
+			console.log(parsedBody.split('=')[1]);
 		});
+		res.setHeader('Content-Type', 'text/html');
+		res.statusCode = 302;
+		res.setHeader('Location', '/');
+		res.end();
 	}
 };
 
