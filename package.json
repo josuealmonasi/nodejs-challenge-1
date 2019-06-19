@@ -1,0 +1,24 @@
+{
+	"name": "challenge1",
+	"version": "1.0.0",
+	"description": "Basic Node.js project that shows how to route and redirect as well as data buffering",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/josuealmonasi/nodejs-challenge-1.git"
+	},
+	"keywords": [ "node", "nodejs", "javascript" ],
+	"author": "Josué Almonasi",
+	"license": " MIT ",
+	"bugs": {
+		"url": "https://github.com/josuealmonasi/nodejs-challenge-1/issues"
+	},
+	"homepage": "https://github.com/josuealmonasi/nodejs-challenge-1#readme",
+	"dependencies": {
+		"nodemon": "^1.19.1"
+	}
+}
