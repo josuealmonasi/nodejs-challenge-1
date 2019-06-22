@@ -1,19 +1,18 @@
+const path = require('path');
 const express = require('express');
-
+const bodyParser = require('body-parser');
 const app = express();
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public'))); // This is used to serve static files
+
+app.use('/admin', adminRoutes);
+app.use(shopRoutes);
 
 app.use((req, res, next) => {
-	console.log('This will always print');
-	next();
-});
-
-app.use('/users', (req, res, next) => {
-	res.send(`<h1>Hello from Express, this is Users section</h1>`);
-	console.log('Entered /users path');
-});
-
-app.use('/', (req, res, next) => {
-	res.send(`<h1>Hello from Express</h1>`);
+	res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 });
 
 app.listen(3000);
